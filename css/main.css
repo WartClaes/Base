@@ -71,49 +71,7 @@ textarea {
 
 
 
-/* ==========================================================================
-   Media Queries
-   ========================================================================== */
 
-/* Big screens */
-@media screen and (min-width: 1200px) {
-
-}
-
-/* Normal screens | iPad landscape */
-@media screen and (max-width: 1024px) {
-
-}
-
-/* iPad portrait */
-@media screen and (max-width: 768px) {
-    .no-tablets {
-        display: none;
-    }
-}
-
-/* 7" tablets */
-@media screen and (max-width: 600px) {
-    .no-tablets {
-        display: none;
-    }
-}
-
-/* iPhone landscape */
-@media screen and (max-width: 480px) {
-    .no-tablets,
-    .no-phones {
-        display: none;
-    }
-}
-
-/* iPhone portrait */
-@media screen and (max-width: 320px) {
-    .no-tablets,
-    .no-phones {
-        display: none;
-    }
-}
 
 /* ==========================================================================
    Helper classes
@@ -488,6 +446,70 @@ textarea {
 
 .test {
     background: hotpink;
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+/* Big screens */
+@media screen and (min-width: 1200px) {
+
+}
+
+/* Normal screens | iPad landscape */
+@media screen and (max-width: 1024px) {
+
+}
+
+/* iPad portrait */
+@media screen and (max-width: 768px) {
+    .no-tablets {
+        display: none;
+    }
+}
+
+/* 7" tablets */
+@media screen and (max-width: 600px) {
+    .no-tablets {
+        display: none;
+    }
+}
+
+/* iPhone landscape */
+@media screen and (max-width: 480px) {
+    .no-tablets,
+    .no-phones {
+        display: none;
+    }
+
+    .container_12 .grid_1,
+    .container_12 .grid_2,
+    .container_12 .grid_3,
+    .container_12 .grid_4,
+    .container_12 .grid_5,
+    .container_12 .grid_6,
+    .container_12 .grid_7,
+    .container_12 .grid_8,
+    .container_12 .grid_9,
+    .container_12 .grid_10,
+    .container_12 .grid_11,
+    .container_12 .grid_12 {
+        display: inline;
+        float: left;
+        margin-left: 1.0416667%; /* 10px / 960px */
+        margin-right: 1.0416667%; /* 10px / 960px */
+        width: 97.9166667%; /* 940px / 960px */
+    }
+}
+
+/* iPhone portrait */
+@media screen and (max-width: 320px) {
+    .no-tablets,
+    .no-phones {
+        display: none;
+    }
+}
 
 /* ==========================================================================
    Print styles
