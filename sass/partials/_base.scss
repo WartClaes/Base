@@ -1,0 +1,11 @@
+$max-width: 1080px;
+
+$calc-width: 960px;
+
+@function calc-percent($target) {
+	@return ($target / $calc-width) * 100%;
+}
+
+@function cp($target) {
+	@return calc-percent($target);
+}
