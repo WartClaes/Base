@@ -75,11 +75,33 @@ textarea {
    Media Queries
    ========================================================================== */
 
-@media only screen and (min-width: 35em) {
+/* Big screens */
+@media screen and (min-width: 1200px) {
 
 }
 
-@media print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+/* Normal screens | iPad landscape */
+@media screen and (max-width: 1024px) {
+
+}
+
+/* iPad portrait */
+@media screen and (max-width: 768px) {
+
+}
+
+/* 7" tablets */
+@media screen and (max-width: 600px) {
+
+}
+
+/* iPhone landscape */
+@media screen and (max-width: 480px) {
+
+}
+
+/* iPhone portrait */
+@media screen and (max-width: 320px) {
 
 }
 
@@ -154,7 +176,6 @@ textarea {
     margin-right: auto;
     max-width: 960px;
     width: 100%;
-    background: hotpink;
 }
 
 .grid_1,
@@ -199,27 +220,22 @@ textarea {
 
 .container_12 .grid_1 {
     width: 6.25%; /* 60px / 960px */
-    background: cyan;
 }
 
 .container_12 .grid_2 {
     width: 14.5833333%; /* 140px / 960px */
-    background: cyan;
 }
 
 .container_12 .grid_3 {
     width: 22.9166667%; /* 220px / 960px */
-    background: cyan;
 }
 
 .container_12 .grid_4 {
     width: 31.25%; /* 300px / 960px */
-    background: cyan;
 }
 
 .container_12 .grid_5 {
     width: 39.5833333%; /* 380px / 960px */
-    background: cyan;
 }
 
 .container_12 .grid_6 {
@@ -455,6 +471,13 @@ textarea {
 .container_12 {
   zoom: 1;
 }
+
+/* ==========================================================================
+   Test styles
+   ========================================================================== */
+
+.test {
+    background: hotpink;
 
 /* ==========================================================================
    Print styles
