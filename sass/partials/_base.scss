@@ -3,7 +3,10 @@ $max-width: 1080px;
 $calc-width: 960px;
 
 @function calc-percent($target) {
-	@return ($target / $calc-width) * 100%;
+	$diff: $max-width / $calc-width;
+	$target: $diff * $target;
+
+	@return ($target / $max-width) * 100%;
 }
 
 @function cp($target) {
