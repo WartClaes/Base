@@ -87,22 +87,32 @@ textarea {
 
 /* iPad portrait */
 @media screen and (max-width: 768px) {
-
+    .no-tablets {
+        display: none;
+    }
 }
 
 /* 7" tablets */
 @media screen and (max-width: 600px) {
-
+    .no-tablets {
+        display: none;
+    }
 }
 
 /* iPhone landscape */
 @media screen and (max-width: 480px) {
-
+    .no-tablets,
+    .no-phones {
+        display: none;
+    }
 }
 
 /* iPhone portrait */
 @media screen and (max-width: 320px) {
-
+    .no-tablets,
+    .no-phones {
+        display: none;
+    }
 }
 
 /* ==========================================================================
