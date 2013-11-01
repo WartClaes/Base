@@ -2,6 +2,10 @@ $max-width: 1080px;
 
 $calc-width: 960px;
 
+$primary-color: #ff00ff; // hotpink
+$secondary-color: #00ffff; // cyan
+
+/* FUNCTIONS */
 @function calc-percent($target) {
 	$diff: $max-width / $calc-width;
 	$target: $diff * $target;
@@ -11,4 +15,18 @@ $calc-width: 960px;
 
 @function cp($target) {
 	@return calc-percent($target);
+}
+
+
+/* MIXINS */
+@mixin transition($arg){
+	transition: $arg;
+}
+
+@mixin border-radius($arg){
+	border-radius: $arg;
+}
+
+@mixin box-shadow($arg){
+	box-shadow: $arg;
 }

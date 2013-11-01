@@ -1,0 +1,25 @@
+.button {
+	display: inline-block;
+	background: $primary-color;
+	padding: 6px 12px;
+	color: #ffffff;
+	text-decoration: none;
+
+	@include transition(all .2s linear);
+	@include border-radius(6px);
+
+	&:hover {
+		background: darken($primary-color, 10);
+
+		@include box-shadow(inset 0 0 5px rgba(0,0,0,.5));
+	}
+
+	&.alt1 {
+		background: $secondary-color;
+		color: #000000;
+		
+		&:hover {
+			background: darken($secondary-color, 10);
+		}
+	}
+}
