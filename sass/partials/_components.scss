@@ -1,25 +1,62 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,300,700);
+
+/* HEADERS */
+h1,
+h2 {
+	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+	font-weight: normal;
+
+	&.line {
+		display: block;
+		border-bottom: 1px solid #000000;
+	}
+}
+
+h1 {
+	font-size: 3em;
+}
+
+h2 {
+	font-size: 2em;
+}
+
 .button {
 	display: inline-block;
-	background: $primary-color;
 	padding: 6px 12px;
+	background: $base-color;
 	color: #ffffff;
 	text-decoration: none;
+	font-weight: 100;
 
-	@include transition(all .2s linear);
 	@include border-radius(6px);
+    @include transition(all .1s linear);
 
-	&:hover {
-		background: darken($primary-color, 10);
+    &:hover {
+    	background: #444444;
+   	}
 
-		@include box-shadow(inset 0 0 5px rgba(0,0,0,.5));
-	}
+   	&.alt {
+    	background: #444444;
 
-	&.alt1 {
-		background: $secondary-color;
-		color: #000000;
-		
-		&:hover {
-			background: darken($secondary-color, 10);
-		}
-	}
+    	&:hover {
+    		background: $base-color;
+    	}
+   	}
+
+   	&.arrow {
+   		padding-right: 30px;
+   		position: relative;
+
+   		&:after {
+   			content:"";
+			border-top: 7px solid transparent;
+			border-left: 14px solid #ffffff;
+			border-bottom: 7px solid transparent;
+			position: absolute;
+			top: 10px;
+			right: 7px;
+   		}
+   	}
+>>>>>>> 4c71cf58254989a36325d7109293894bdb00d8b6
 }

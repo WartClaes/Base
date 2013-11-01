@@ -1,5 +1,7 @@
-$max-width: 1080px;
+$base-color: #2c76a4;
 
+/* RESPONSIVE VALUES */
+$max-width: 1080px;
 $calc-width: 960px;
 
 $primary-color: #ff00ff; // hotpink
@@ -17,16 +19,21 @@ $secondary-color: #00ffff; // cyan
 	@return calc-percent($target);
 }
 
-
 /* MIXINS */
-@mixin transition($arg){
-	transition: $arg;
+@mixin transition($arg) {
+	-webkit-transition: $arg;
+	   -moz-transition: $arg;
+        -ms-transition: $arg;
+         -o-transition: $arg;
+			transition: $arg;
 }
 
 @mixin border-radius($arg){
-	border-radius: $arg;
+	-webkit-border-radius: $arg;
+    		border-radius: $arg;
 }
 
-@mixin box-shadow($arg){
-	box-shadow: $arg;
+@mixin box-shadow($arg) {
+	-webkit-box-shadow: $arg;
+			box-shadow: $arg;
 }
