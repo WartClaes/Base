@@ -6,6 +6,10 @@ $columns: 12;
 $gutter: 20px;
 $padding: 5px 10px;
 
+$primary-color: #ff00ff; // hotpink
+$secondary-color: #00ffff; // cyan
+
+/* FUNCTIONS */
 @function calc-percent($target) {
 	@return ($target / $max-width) * 100%;
 }
