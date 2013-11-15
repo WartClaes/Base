@@ -91,4 +91,24 @@ Avoid using global variables
 Never leave console.log in the js when going live
 
 
-// BROWSER SUPPORT should be included
+## Browser support
+
+We support: 
+
+The last two versions of each common desktop browser 
+- Chrome
+- Firefox
+- IE
+- Safari 
+
+The default mobile browsers
+- iOS: Safari
+- Andriod: Android Browser
+- Windows Phone: IE
+
+
+What do I get?
+--------------
+
+- A SCSS framework, combined with usefull HTML en Javascript snippets
+- A dynamic, fully responsive grid system, rendered with SCSS to fulfill your wishes (dynamic grid size, maximum width and gutter width)
