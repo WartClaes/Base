@@ -1,13 +1,12 @@
 $base-color: #2c76a4;
 
 /* RESPONSIVE VALUES */
-$max-width: 1080px;
-$calc-width: 960px;
+$max-width: 2500px;
+$columns: 12;
+$gutter: 20px;
+$padding: 5px 10px;
 
 @function calc-percent($target) {
-	$diff: $max-width / $calc-width;
-	$target: $diff * $target;
-
 	@return ($target / $max-width) * 100%;
 }
 
@@ -32,4 +31,10 @@ $calc-width: 960px;
 @mixin box-shadow($arg) {
 	-webkit-box-shadow: $arg;
 			box-shadow: $arg;
+}
+
+@mixin border-box() {
+	-webkit-box-sizing: border-box; 
+       -moz-box-sizing: border-box; 
+            box-sizing: border-box;
 }

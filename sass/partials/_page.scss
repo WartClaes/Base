@@ -1,7 +1,12 @@
 .test {
     background: hotpink;
+
+    .test {
+    	background: cyan;
+    }
 }
 
 body {
 	background: url('../img/pattern.png');
+	font-size: 12px;
 }

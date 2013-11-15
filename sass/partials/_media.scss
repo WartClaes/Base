@@ -23,23 +23,23 @@
         display: none;
     }
 
-    .container_12 .grid_1,
-    .container_12 .grid_2,
-    .container_12 .grid_3,
-    .container_12 .grid_4,
-    .container_12 .grid_5,
-    .container_12 .grid_6,
-    .container_12 .grid_7,
-    .container_12 .grid_8,
-    .container_12 .grid_9,
-    .container_12 .grid_10,
-    .container_12 .grid_11,
-    .container_12 .grid_12 {
+    .grid-container .grid-1,
+    .grid-container .grid-2,
+    .grid-container .grid-3,
+    .grid-container .grid-4,
+    .grid-container .grid-5,
+    .grid-container .grid-6,
+    .grid-container .grid-7,
+    .grid-container .grid-8,
+    .grid-container .grid-9,
+    .grid-container .grid-10,
+    .grid-container .grid-11,
+    .grid-container .grid-12 {
         display: inline;
         float: left;
-        margin-left: 1.0416667%; /* 10px / 960px */
-        margin-right: 1.0416667%; /* 10px / 960px */
-        width: 97.9166667%; /* 940px / 960px */
+        width: cp($max-width - $gutter);
+        margin-left: cp($gutter/2);
+        margin-right: cp($gutter/2);
     }
 }
 
