@@ -1,12 +1,13 @@
-@import "partials/normalize";
+@import "globals/normalize";
+@import "globals/overrides";
 
-@import "partials/base";
-@import "partials/overrides";
+@import "base";
 
-@import "partials/page";
+@import "project/page";
 
-@import "partials/helpers";
-@import "partials/grid";
+@import "components/grid";
+@import "components/forms";
+@import "globals/helpers";
 
-@import "partials/media";
-@import "partials/print";
+@import "project/media";
+@import "globals/print";

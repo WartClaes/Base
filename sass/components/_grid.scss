@@ -19,7 +19,9 @@
 
         @include border-box();
     }
+}
 
+@for $i from 1 through $columns {
     .grid-container .push-#{$i} {
         margin-left: cp((($max-width/$columns) * $i) + ($gutter/2));
         position: relative;
