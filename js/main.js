@@ -28,4 +28,6 @@ $(function(){
 	site.init({
 		debug: true
 	});
+
+	$('.numeric').numeric();
 });
