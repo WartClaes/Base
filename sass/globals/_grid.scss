@@ -1,4 +1,17 @@
-/* 12 column Grid system [target / context = result] */
+/*
+==========================================================================
+Grid CSS
+- 12 column Grid system [target / context = result]
+==========================================================================
+*/
+
+@function calc-percent($target) {
+    @return ($target / $max-width) * 100%;
+}
+
+@function cp($target) {
+    @return calc-percent($target);
+}
 
 .grid-container {
     margin-left: auto;
@@ -8,7 +21,7 @@
 }
 
 @for $i from 1 through $columns {
-    .grid-container .grid-#{$i} { 
+    .grid-container .grid-#{$i} {
         display: inline;
         float: left;
         width: cp((($max-width/$columns) * $i) - $gutter);

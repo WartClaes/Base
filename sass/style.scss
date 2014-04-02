@@ -1,13 +1,16 @@
 @import "globals/normalize";
 @import "globals/overrides";
 
-@import "base";
+@import "settings";
 
+@import "fs/animations";
+@import "fs/mixins";
+
+@import "project/typography";
 @import "project/page";
 
-@import "components/grid";
-@import "components/forms";
+@import "globals/grid";
+@import "globals/forms";
 @import "globals/helpers";
 
-@import "project/media";
 @import "globals/print";
