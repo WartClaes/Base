@@ -12,8 +12,8 @@ Also provided: coding guidelines to make everyting consistent.
 
 1. [What do I get?](#what-do-i-get)
 2. [Coding standards](#coding-standards)
-3. ~~[SCSS](#scss)~~
-4. ~~[Javascript helpers](#javascript-helpers)~~
+3. [SCSS](#scss)
+4. [Javascript helpers](#javascript-helpers)
 5. ~~[Grunt](#grunt)~~
 6. [Browser Support](#browser-support)
 
@@ -110,10 +110,40 @@ Never leave console.log in the js when going live
 
 ## SCSS
 
+This project contains a SCSS structure, rendered by Compass:
+
+	├── fs
+	|	└── animations
+	|	└── mixins
+	└── globals
+    |	└── forms
+	|   └── grid
+    |  	└── helpers
+    |  	└── normalize
+    |  	└── overrides
+    |  	└── bprint
+	└── project
+	|	└── page
+	|	└── typography
+	|	└── media
+	|		└── ...
+	└── vendor
+		└── ...
+
+The **globals** folder is the folder with all the default styling/components. Normally those files are there just to make life easier.
+
+**FS** is the Funky Sh*t folder. In here you have some files for e.g. animations and mixins.
+
+The **project** folder is where the magic happens. Everything you have to build for your project is written in these files.
+
+**Vendor** is vendor. Easy.
 
 
 ## Javscript helpers
 
+The project also includes some JavaScript helpers functions. These functions are still under development so there will be a constant movement in the file.
+
+If there is any need for some extra functionality, feel free to ask, or just add it yourself.
 
 
 ## Grunt
