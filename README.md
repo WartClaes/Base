@@ -1,14 +1,31 @@
 HTML & CSS template
 ===================
 
-Introduction
-------------
+## Introduction
+---
 
 This is a standard HTML and CSS based on HTML5 Boilerplate, Nathan Smith's 960 grid and pieces from Bootstrap 3.
 Also provided: coding guidelines to make everyting consistent.
 
-Standards
----------
+## Table of contents
+---
+
+1. [What do I get?](#what-do-i-get)
+2. [Coding standards](#coding-standards)
+3. ~~[SCSS](#scss)~~
+4. ~~[Javascript helpers](#javascript-helpers)~~
+5. ~~[Grunt](#grunt)~~
+6. [Browser Support](#browser-support)
+
+## 1 -- What do I get?
+---
+
+- A SCSS framework, combined with usefull HTML en Javascript snippets
+- A dynamic, fully responsive grid system, rendered with SCSS to fulfill your wishes (dynamic grid size, maximum width and gutter width)
+
+
+## 2 -- Coding standards
+---
 
 ### Coding Style
 
@@ -57,7 +74,7 @@ When declaring multiple classes in one rule, seperate them in multiple lines
     }
 
 
-### Links an buttons
+### Links & buttons
 
 Default styles for links should be declared and different from the main text styling (eg. underlined), and with differing styles for hover state.
 
@@ -91,7 +108,18 @@ Avoid using global variables
 Never leave console.log in the js when going live
 
 
+## SCSS
+---
+
+## Javscript helpers
+---
+
+## Grunt
+---
+
+
 ## Browser support
+---
 
 We support: 
 
@@ -105,10 +133,3 @@ The default mobile browsers
 - iOS: Safari
 - Andriod: Android Browser
 - Windows Phone: IE
-
-
-What do I get?
---------------
-
-- A SCSS framework, combined with usefull HTML en Javascript snippets
-- A dynamic, fully responsive grid system, rendered with SCSS to fulfill your wishes (dynamic grid size, maximum width and gutter width)
