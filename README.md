@@ -2,13 +2,13 @@ HTML & CSS template
 ===================
 
 ## Introduction
----
+
 
 This is a standard HTML and CSS based on HTML5 Boilerplate, Nathan Smith's 960 grid and pieces from Bootstrap 3.
 Also provided: coding guidelines to make everyting consistent.
 
 ## Table of contents
----
+
 
 1. [What do I get?](#what-do-i-get)
 2. [Coding standards](#coding-standards)
@@ -17,15 +17,15 @@ Also provided: coding guidelines to make everyting consistent.
 5. ~~[Grunt](#grunt)~~
 6. [Browser Support](#browser-support)
 
-## 1 -- What do I get?
----
+## What do I get?
+
 
 - A SCSS framework, combined with usefull HTML en Javascript snippets
 - A dynamic, fully responsive grid system, rendered with SCSS to fulfill your wishes (dynamic grid size, maximum width and gutter width)
 
 
-## 2 -- Coding standards
----
+## Coding standards
+
 
 ### Coding Style
 
@@ -109,17 +109,20 @@ Never leave console.log in the js when going live
 
 
 ## SCSS
----
+
+
 
 ## Javscript helpers
----
+
+
 
 ## Grunt
----
+
+
 
 
 ## Browser support
----
+
 
 We support: 
 
