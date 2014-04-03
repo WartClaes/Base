@@ -3,16 +3,18 @@
  */
 'use strict';
 
+var buildDir = 'build'
+
 module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
-        clean: ["dist"],
+        clean: [buildDir],
         copy: {
             main: {
                 files: [
                     // includes files within path and its sub-directories
-                    {expand: true, src: ['*.html'], dest: 'dist/'},
+                    {expand: true, src: ['*.html'], dest: buildDir},
                 ]
             }
         },
@@ -32,7 +34,7 @@ module.exports = function(grunt) {
                 options: {
                     port: 8080,
                     keepalive: true,
-                    base: 'dist'
+                    base: buildDir
                 }
             }
         },
@@ -49,7 +51,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     src: '**/*.js',
-                    dest: 'dist/js',
+                    dest: buildDir + '/js',
                     cwd: 'js'
                 }]
             }
@@ -65,7 +67,7 @@ module.exports = function(grunt) {
                 options: {
                     config: 'config.rb',
                     outputStyle: 'compressed',
-                    cssDir: 'dist/css'
+                    cssDir: buildDir + '/css'
                 },
                 files: 'sass/**/*.scss'
             }
@@ -76,14 +78,11 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'img/',
                     src: ['**/*.{png,jpg,gif}'],
-                    dest: 'dist/img/'
+                    dest: buildDir + '/img/'
                 }]
             }
         },
         watch: {
-            options: {
-                livereload: true
-            },
             scripts: {
                 files: ['js/*.js'],
                 tasks: ['jshint', 'uglify']
