@@ -22,7 +22,7 @@ var site = {
 
 		site.log('test');
 	}
-}
+};
 
 $(function(){
 	site.init({

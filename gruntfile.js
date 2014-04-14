@@ -3,38 +3,71 @@
  */
 'use strict';
 
-var buildDir = 'build'
+var buildDir = 'build',
+    port = 35729,
+    lrSnippet = require('connect-livereload')({ port: port }),
+    mountFolder = function( connect, dir ) {
+        return connect.static(require('path').resolve(dir));
+    };
 
 module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
-        clean: [buildDir],
+        pkg: grunt.file.readJSON('package.json'),
+        clean: [buildDir, 'js/min'],
         copy: {
             main: {
-                files: [
-                    // includes files within path and its sub-directories
-                    {expand: true, src: ['*.html'], dest: buildDir},
-                ]
+                files: [{
+                    expand: true,
+                    src: ['*.html'],
+                    dest: buildDir
+                }]
+            },
+            vendor: {
+                files: [{
+                    expand: true,
+                    src: ['js/vendor/*'],
+                    dest: buildDir
+                }]
             }
         },
         connect: {
-            test: {
-                port: 8000
+            options: {
+                port: 9000,
+                hostname: '0.0.0.0'
             },
-
-            develop: {
+            livereload: {
                 options: {
-                    port: 9001,
-                    keepalive: true
+                    middleware: function( connect ) {
+                        return [
+                            lrSnippet,
+                            mountFolder(connect, './')
+                        ];
+                    }
                 }
+            }
+        },
+        open: {
+            server: {
+                url: 'http://localhost:<%= connect.options.port %>'
+            }
+        },
+        concat: {
+            options: {
+                separator: ';',
+                stripBanners: true,
+                banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %> */',
             },
-
-            prod: {
-                options: {
-                    port: 8080,
-                    keepalive: true,
-                    base: buildDir
+            dist: {
+                src: 'js/min/*.js',
+                dest: buildDir + '/js/app.js',
+            }
+        },
+        processhtml: {
+            dist: {
+                files: {
+                    'build/index.html' : ['index.html']
                 }
             }
         },
@@ -50,8 +83,8 @@ module.exports = function(grunt) {
             my_target: {
                 files: [{
                     expand: true,
-                    src: '**/*.js',
-                    dest: buildDir + '/js',
+                    src: '*.js',
+                    dest: 'js/min',
                     cwd: 'js'
                 }]
             }
@@ -92,23 +125,51 @@ module.exports = function(grunt) {
                 tasks: ['compass:dev']
             },
             html: {
-                files: ['*.html'],
+                files: ['*.html']
+            },
+            livereload: {
+                options: {
+                    livereload: port
+                },
+                files: ['css/**/*', 'js/**/*', '*.html'],
             }
         }
     });
 
     // A task for development
-    grunt.registerTask('dev', [
-        'compass:dev'
-    ]);
+    // grunt.registerTask('dev', [
+    //     'clean',
+    //     'copy',
+    //     'compass:dev',
+    //     'jshint',
+    //     'connect:livereload',
+    //     'open',
+    //     'watch'
+    // ]);
+
+    grunt.registerTask('dev', function() {
+        grunt.task.run([
+            'clean',
+            'copy',
+            'compass:dev',
+            'jshint',
+            'connect:livereload',
+            'open',
+            'watch'
+        ]);
+    });
 
     grunt.registerTask('build', [
         'clean',
         'copy',
         'compass:build',
+        'jshint',
         'uglify',
-        'imagemin'
+        'concat',
+        'imagemin',
+        'processhtml',
+        'connect:prod'
     ]);
 
-    grunt.registerTask('default', 'watch');
+    grunt.registerTask('default', 'dev');
 }

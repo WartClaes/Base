@@ -7,13 +7,8 @@
                 maxChars = $this.attr('data-max-length');
 
             // Allow: backspace, delete, tab, escape, enter and .
-            if ($.inArray(event.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
-                 // Allow: Ctrl+A
-                (event.keyCode == 65 && event.ctrlKey === true) ||
-                 // Allow: home, end, left, right
-                (event.keyCode >= 35 && event.keyCode <= 39)) {
-                     // let it happen, don't do anything
-                     return;
+            if ($.inArray(event.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 || (event.keyCode === 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
+                return;
             }
 
             // Ensure that it is a number and stop the keypress
@@ -27,7 +22,7 @@
                 }
             }
         });
-    }
+    };
 
     $.fn.scrollToAnchor = function(offset) {
         var $this = this;
@@ -35,7 +30,7 @@
         $this.bind('click', function(event){
             var href = $(this).attr('href');
 
-            if(href.substring(0, 1) == "#" && $(href).length) {
+            if(href.substring(0, 1) === '#' && $(href).length) {
                 event.preventDefault();
 
                 var top = $(href).offset().top;
@@ -51,5 +46,5 @@
                 return false;
             }
         });
-    }
+    };
 }(jQuery));

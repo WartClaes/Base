@@ -148,7 +148,7 @@ If there is any need for some extra functionality, feel free to ask, or just add
 
 ## Grunt
 
-
+The project includes a Grunt file
 
 
 ## Browser support
