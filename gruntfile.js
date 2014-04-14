@@ -136,22 +136,8 @@ module.exports = function(grunt) {
         }
     });
 
-    // A task for development
-    // grunt.registerTask('dev', [
-    //     'clean',
-    //     'copy',
-    //     'compass:dev',
-    //     'jshint',
-    //     'connect:livereload',
-    //     'open',
-    //     'watch'
-    // ]);
-
     grunt.registerTask('dev', function() {
         grunt.task.run([
-            'clean',
-            'copy',
-            'compass:dev',
             'jshint',
             'connect:livereload',
             'open',
@@ -167,8 +153,7 @@ module.exports = function(grunt) {
         'uglify',
         'concat',
         'imagemin',
-        'processhtml',
-        'connect:prod'
+        'processhtml'
     ]);
 
     grunt.registerTask('default', 'dev');
