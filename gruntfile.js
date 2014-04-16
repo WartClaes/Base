@@ -20,7 +20,7 @@ module.exports = function(grunt) {
             main: {
                 files: [{
                     expand: true,
-                    src: ['*.html'],
+                    src: ['**/*.html', '!node_modules/**/*', '!build/**/*'],
                     dest: buildDir
                 }]
             },
