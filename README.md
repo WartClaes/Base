@@ -37,7 +37,7 @@ Put spaces after : in property declarations.
 
 Put spaces before { in rule declarations.
 
-    #foe {
+    #foo {
         ...
     }
 
@@ -59,7 +59,7 @@ It is always preferable to name something, be it an ID or a class, by the nature
 
 Use dashes in classnames and id's.
     
-    .foe-bar {
+    .foo-bar {
         ...
     }
 
@@ -68,7 +68,7 @@ A rule like #header .search #quicksearch { ... } is considered harmful.
 
 When declaring multiple classes in one rule, seperate them in multiple lines
 
-    .foe,
+    .foo,
     .bar {
         ...
     }
