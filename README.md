@@ -14,7 +14,7 @@ Also provided: coding guidelines to make everyting consistent.
 2. [Coding standards](#coding-standards)
 3. [SCSS](#scss)
 4. [Javascript helpers](#javascript-helpers)
-5. ~~[Grunt](#grunt)~~
+5. [Grunt](#grunt)
 6. [Browser Support](#browser-support)
 
 ## What do I get?
@@ -139,7 +139,7 @@ The **project** folder is where the magic happens. Everything you have to build 
 **Vendor** is vendor. Easy.
 
 
-## Javscript helpers
+## Javascript helpers
 
 The project also includes some JavaScript helpers functions. These functions are still under development so there will be a constant movement in the file.
 
@@ -148,21 +148,83 @@ If there is any need for some extra functionality, feel free to ask, or just add
 
 ## Grunt
 
-The project includes a Grunt file
+The project includes a [Grunt file](https://github.com/WartClaes/Base/blob/master/gruntfile.js) with some predefined tasks.
 
+
+###Dev (default)
+
+this runs:
+
+
+#####1. jshint
+
+Runs a jshint at the beginning. Just to be shure. For all settings check the [.jshintrc file](https://github.com/WartClaes/Base/blob/master/.jshintrc)
+
+#####2. connect:livereload
+
+The grunt file starts a localhost at port 9000.
+This also enables the livereload function every time you save some **.html** or files in the **css** and js folders.
+
+#####3. open
+
+This opens the localhost:9000 in your default browser
+
+#####4. watch
+
+Listens to changes in **.html** or files in the **css** and js folders.
+Compiles what is needed. SCSS for .css files and JSHint for .js files
+
+
+###Build
+
+The build command creates a **/build** folder. That's the folder you need online. No more SCSS files on a production server.
+
+#####1. clean
+
+Clean the **/build** directory so we can start from scratch
+
+#####2. copy
+
+Copy all the **.html** files, exept those in **/build** and **/node_modules**. After that copy all **/js/vendor** files.
+
+#####3. compass:build
+
+This compiles the SCSS, but minifies it in the same action.
+
+#####4. jshint
+
+The same as before.
+
+#####5. uglify
+
+Uglify the JS. And minify it as well. Tiny is the key.
+
+#####6. concat
+
+Glue the JS files together. We create on **app.js** to lower the requests.
+
+#####7. imagemin
+
+Again minify. The images can be smaller, sites can be faster.
+
+#####8. processhtml
+
+We process the HTML files to include the **app.js** in stead of all the different files. This also removes the livereload js.
+
+By default we only minify the **index.html**. Other pages should be added manually at this time?
 
 ## Browser support
 
 
-We support: 
+We support the last two versions of each common desktop browser :
 
-The last two versions of each common desktop browser 
 - Chrome
 - Firefox
 - IE
 - Safari 
 
-The default mobile browsers
+... and the default mobile browsers:
+
 - iOS: Safari
 - Andriod: Android Browser
 - Windows Phone: IE
