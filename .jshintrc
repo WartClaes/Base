@@ -22,6 +22,10 @@
         "$": true,
 
         "window": true,
+        "document": true,
+        "navigator": true,
+        "location": true,
+        "alert": true,
 
         "module": true,
         "require": true,
