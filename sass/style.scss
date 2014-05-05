@@ -6,11 +6,12 @@
 @import "fs/animations";
 @import "fs/mixins";
 
-@import "project/typography";
-@import "project/page";
-
 @import "globals/grid";
 @import "globals/forms";
 @import "globals/helpers";
+
+@import "project/typography";
+@import "project/page";
+@import "project/feed";
 
 @import "globals/print";
