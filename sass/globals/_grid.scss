@@ -27,7 +27,7 @@ Grid CSS
         width: cp((($max-width/$columns) * $i) - $gutter);
         margin-left: cp($gutter/2);
         margin-right: cp($gutter/2);
-        // margin-bottom: cp(20px);
+        margin-bottom: cp(20px);
         padding: $padding;
 
         @include border-box();

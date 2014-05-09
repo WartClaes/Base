@@ -20,28 +20,14 @@ module.exports = function(grunt) {
             main: {
                 files: [{
                     expand: true,
-                    src: ['**/*.html', '!node_modules/**/*', '!build/**/*'],
+                    src: ['*.html'],
                     dest: buildDir
                 }]
             },
             vendor: {
                 files: [{
                     expand: true,
-                    src: ['js/vendor/**/*'],
-                    dest: buildDir
-                }]
-            },
-            docs: {
-                files: [{
-                    expand: true,
-                    src: ['utils/**/*', 'docs/**/*'],
-                    dest: buildDir
-                }]
-            },
-            svg: {
-                files: [{
-                    expand: true,
-                    src: ['img/**/*.svg'],
+                    src: ['js/vendor/*'],
                     dest: buildDir
                 }]
             }
@@ -81,9 +67,7 @@ module.exports = function(grunt) {
         processhtml: {
             dist: {
                 files: {
-                    'build/index.html' : ['index.html'],
-                    'build/index-nl.html' : ['index-nl.html'],
-                    'build/index-fr.html' : ['index-fr.html']
+                    'build/index.html' : ['index.html']
                 }
             }
         },
