@@ -30,4 +30,6 @@ $(function(){
 	});
 
 	$('.numeric').numeric();
+
+    $('.tag').tagger();
 });
