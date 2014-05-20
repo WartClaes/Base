@@ -81,11 +81,8 @@
             updateTags();
         }
 
-        function removeTag(){
-            var $el = $(this);
-
-            $el.closest('.tag').remove();
-
+        function removeTag($el){
+            $el.closest('.' + defaults.prefix + '-tag').remove();
             updateTags();
         }
 
@@ -101,7 +98,6 @@
 
         var $this = this,
             $btn = $('<a id="' +defaults.prefix + '-add">' + defaults.btnText + '</a>'),
-            $close = $('<span class="' + defaults.prefix + '-close" />'),
             $input = $('<input type="text" class="' + defaults.prefix + '-input" />'),
             $container = $('<div id="' + defaults.prefix + '-container" />');
 
@@ -126,8 +122,8 @@
             }
         });
 
-        $close.on('click', function(){
-            removeTag();
+        $('body').on('click', '.' + defaults.prefix + '-close', function(){
+            removeTag($(this));
         });
     };
 }(jQuery));
