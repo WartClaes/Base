@@ -102,7 +102,7 @@
             $container = $('<div id="' + defaults.prefix + '-container" />');
 
 
-        // $this.hide();
+        $this.hide();
 
         $this.after($btn, $input, $container);
 
