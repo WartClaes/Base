@@ -66,9 +66,15 @@ module.exports = function(grunt) {
         },
         processhtml: {
             dist: {
-                files: {
-                    'build/index.html' : ['index.html']
-                }
+                options: {
+                    process: true,
+                },
+                files: [{
+                    expand: true,
+                    src: ['**/*.html'],
+                    dest: 'dist/',
+                    ext: '.html'
+                }]
             }
         },
         jshint: {
