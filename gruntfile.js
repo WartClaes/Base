@@ -71,8 +71,8 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    src: ['**/*.html'],
-                    dest: 'dist/',
+                    src: ['**/*.html', '!node_modules/**', '!build/**'],
+                    dest: 'build/',
                     ext: '.html'
                 }]
             }
