@@ -86,7 +86,7 @@ module.exports = function(grunt) {
             }
         },
         uglify: {
-            my_target: {
+            build: {
                 files: [{
                     expand: true,
                     src: '*.js',
