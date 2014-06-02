@@ -14,7 +14,7 @@ Also provided: coding guidelines to make everyting consistent.
 2. [Coding standards](#coding-standards)
 3. [SCSS](#scss)
 4. [Javascript helpers](#javascript-helpers)
-5. ~~[Grunt](#grunt)~~
+5. ~~[Gulp](#gulp)~~
 6. [Browser Support](#browser-support)
 
 ## What do I get?
@@ -146,9 +146,9 @@ The project also includes some JavaScript helpers functions. These functions are
 If there is any need for some extra functionality, feel free to ask, or just add it yourself.
 
 
-## Grunt
+## Gulp
 
-The project includes a Grunt file
+The project includes a Gulp file
 
 
 ## Browser support
