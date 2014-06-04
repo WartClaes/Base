@@ -3,7 +3,8 @@ var gulp = require('gulp'),
    rimraf = require('rimraf'),
    jshint = require('gulp-jshint'),
    uglify = require('gulp-uglify'),
-   sass = require('gulp-sass'),
+   //sass = require('gulp-sass'),
+   compass = require('gulp-compass'),
    minifycss = require('gulp-minify-css'),
    imagemin = require('gulp-imagemin'),
    cache = require('gulp-cache'),
@@ -51,16 +52,28 @@ gulp.task('uglify', function () {
        .pipe(gulp.dest(config.dist + '/js'));
 });
 
-gulp.task('sass', function () {
-   var dir = config.styles();
+gulp.task('compass', function() {
+    var dir = config.styles();
 
-   return gulp.src(dir + '/**/*.scss')
-       .pipe(plumber())
-       .pipe(sass({
-           outputStyle: 'expanded'
-       }))
-       .pipe(gulp.dest(config.app + '/css'));
+  return gulp.src(dir + '/**/*.scss')
+  .pipe(compass({
+    config_file: config.app + './config.rb',
+    css: config.app + '/css',
+    sass: config.app + '/sass'
+  }))
+  .pipe(gulp.dest('app/assets/temp'));
 });
+
+// gulp.task('sass', function () {
+//    var dir = config.styles();
+
+//    return gulp.src(dir + '/**/*.scss')
+//        .pipe(plumber())
+//        .pipe(sass({
+//            outputStyle: 'expanded'
+//        }))
+//        .pipe(gulp.dest(config.app + '/css'));
+// });
 
 gulp.task('minify-css', function () {
    var dir = config.styles();
@@ -95,7 +108,7 @@ gulp.task('minify-end', function(){
 gulp.task('watch', function() {
 
    // Watch .scss files
-   gulp.watch(config.styles() + '/**/*.scss', ['sass']);
+   gulp.watch(config.styles() + '/**/*.scss', ['compass']);
 
    // Watch .js files
    gulp.watch(config.scripts() + '/**/*.js', ['lint']);

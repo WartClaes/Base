@@ -8,4 +8,4 @@ line_comments = true
 
 preferred_syntax = :scss
 
-output_style = :compressed
+output_style = :expanded
