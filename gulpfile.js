@@ -1,18 +1,15 @@
 var gulp = require('gulp'),
-    connect = require('connect'),
-    http = require('http'),
-    opn = require('opn'),
+
     rimraf = require('rimraf'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
     sass = require('gulp-sass'),
     minifycss = require('gulp-minify-css'),
-    useref = require('gulp-useref'),
-    filter = require('gulp-filter'),
-    livereload = require('gulp-livereload'),
     imagemin = require('gulp-imagemin'),
     cache = require('gulp-cache'),
     plumber = require('gulp-plumber'),
+    notify = require('gulp-notify'),
+
     config = {
         app: './',
         dist: 'build',
@@ -45,6 +42,15 @@ gulp.task('lint', function() {
         .pipe(jshint.reporter('default'));
 });
 
+gulp.task('uglify', function () {
+    var dir = config.styles();
+
+    return gulp.src(config.app + '/js')
+        .pipe(plumber())
+        .pipe(uglify())
+        .pipe(gulp.dest(config.dist + '/js'));
+});
+
 gulp.task('sass', function () {
     var dir = config.styles();
 
@@ -54,6 +60,15 @@ gulp.task('sass', function () {
             outputStyle: 'expanded'
         }))
         .pipe(gulp.dest(config.app + '/css'));
+});
+
+gulp.task('minify-css', function () {
+    var dir = config.styles();
+
+    return gulp.src(config.app + '/css')
+        .pipe(plumber())
+        .pipe(minifycss())
+        .pipe(gulp.dest(config.dist + '/css'));
 });
 
 gulp.task('images', function(){
@@ -66,24 +81,20 @@ gulp.task('images', function(){
         .pipe(gulp.dest(config.app + '/img'));
 });
 
-gulp.task('misc', function(){
-    return gulp.src([
-            config.app + '/*.{ico,png,txt}',
-            config.app + '/.htaccess'
-        ])
-        .pipe(gulp.dest(config.dist));
-});
+gulp.task('minify-end', function(){
+    return gulp.pipe(notify({ message: 'Scripts task complete' }));
+})
 
 gulp.task('watch', function() {
 
-  // Watch .scss files
-  gulp.watch(config.styles() + '/**/*.scss', ['sass']);
+    // Watch .scss files
+    gulp.watch(config.styles() + '/**/*.scss', ['sass']);
 
-  // Watch .js files
-  gulp.watch(config.scripts() + '/**/*.js', ['lint']);
+    // Watch .js files
+    gulp.watch(config.scripts() + '/**/*.js', ['lint']);
 
-  // Watch image files
-  gulp.watch(config.images() + '/**/*', ['images']);
+    // Watch image files
+    gulp.watch(config.images() + '/**/*', ['images']);
 
 });
 
@@ -93,5 +104,5 @@ gulp.task('default', function() {
 });
 
 gulp.task('build', ['clean'], function(){
-    gulp.start('images', 'fonts', 'misc', 'html');
+    gulp.start('images', 'minify-css', 'uglify', 'minify-end');
 });
