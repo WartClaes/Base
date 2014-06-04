@@ -1,5 +1,6 @@
 .sass-cache/
 node_modules/
+build/
 
 # don't commit the distribution version. It will cause mistakes
 dist/

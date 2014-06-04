@@ -86,8 +86,10 @@ gulp.task('images-copy', function(){
    .pipe(gulp.dest(config.dist + '/img'));
 });
 
+
 gulp.task('minify-end', function(){
-   return gulp.pipe(notify({ message: 'Scripts task complete' }));
+    return gulp.src(config.app)
+        .pipe(notify({ message: 'Build task complete' }));
 })
 
 gulp.task('watch', function() {

@@ -6,7 +6,7 @@
     "matchdep": "~0.3.0"
   },
   "devDependencies": {
-    "gulp": "~3.6.2",
+    "gulp": "~3.7.0",
 
     "gulp-sass": "~0.7.1",
     "gulp-jshint": "~1.5.3",
