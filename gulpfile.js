@@ -55,13 +55,14 @@ gulp.task('uglify', function () {
 gulp.task('compass', function() {
     var dir = config.styles();
 
-  return gulp.src(dir + '/**/*.scss')
-  .pipe(compass({
-    config_file: config.app + './config.rb',
-    css: config.app + '/css',
-    sass: config.app + '/sass'
-  }))
-  .pipe(gulp.dest('app/assets/temp'));
+    return gulp.src(dir + '/**/*.scss')
+        .pipe(plumber())
+        .pipe(compass({
+            config_file: './config.rb',
+            css: config.app + '/css',
+            sass: config.app + '/sass'
+        }))
+        .pipe(gulp.dest(config.app + '/css'));
 });
 
 // gulp.task('sass', function () {
