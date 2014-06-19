@@ -3,7 +3,6 @@ var gulp = require('gulp'),
    rimraf = require('rimraf'),
    jshint = require('gulp-jshint'),
    uglify = require('gulp-uglify'),
-   //sass = require('gulp-sass'),
    compass = require('gulp-compass'),
    minifycss = require('gulp-minify-css'),
    imagemin = require('gulp-imagemin'),
@@ -16,7 +15,7 @@ var gulp = require('gulp'),
        dist: 'build',
        port: 9000,
        scripts: function () {
-           return this.app + '/js/*.js';
+           return this.app + '/js';
        },
        styles: function () {
            return this.app + '/sass';
@@ -35,18 +34,18 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('lint', function() {
-   var path = config.scripts();
+   var dir = config.scripts();
 
-   return gulp.src(path)
+   return gulp.src(dir)
        .pipe(plumber())
        .pipe(jshint())
        .pipe(jshint.reporter('default'));
 });
 
 gulp.task('uglify', function () {
-   var dir = config.styles();
+   var dir = config.scripts();
 
-   return gulp.src(config.app + '/js')
+   return gulp.src(dir)
        .pipe(plumber())
        .pipe(uglify())
        .pipe(gulp.dest(config.dist + '/js'));
@@ -64,17 +63,6 @@ gulp.task('compass', function() {
         }))
         .pipe(gulp.dest(config.app + '/css'));
 });
-
-// gulp.task('sass', function () {
-//    var dir = config.styles();
-
-//    return gulp.src(dir + '/**/*.scss')
-//        .pipe(plumber())
-//        .pipe(sass({
-//            outputStyle: 'expanded'
-//        }))
-//        .pipe(gulp.dest(config.app + '/css'));
-// });
 
 gulp.task('minify-css', function () {
    var dir = config.styles();
