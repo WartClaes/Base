@@ -19,8 +19,6 @@ var site = {
 	},
 	init: function(settings){
 		$.extend(this.settings, settings);
-
-		site.log('test');
 	}
 };
 
