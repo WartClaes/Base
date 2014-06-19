@@ -26,8 +26,4 @@ $(function(){
 	site.init({
 		debug: true
 	});
-
-	$('.numeric').numeric();
-
-    $('.tag').tagger();
 });
