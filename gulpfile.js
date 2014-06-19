@@ -34,21 +34,22 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('lint', function() {
-   var dir = config.scripts();
+    var dir = config.scripts(),
+        jsFilter = gulpFilter('!/vendor');
 
-   return gulp.src(dir)
-       .pipe(plumber())
-       .pipe(jshint())
-       .pipe(jshint.reporter('default'));
+    return gulp.src([dir + '/*.js', dir + '/helpers/*.js', dir + '!/vendor/**/*.js'])
+        .pipe(plumber())
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'));
 });
 
 gulp.task('uglify', function () {
-   var dir = config.scripts();
+    var dir = config.scripts();
 
-   return gulp.src(dir)
-       .pipe(plumber())
-       .pipe(uglify())
-       .pipe(gulp.dest(config.dist + '/js'));
+    return gulp.src(dir)
+        .pipe(plumber())
+        .pipe(uglify())
+        .pipe(gulp.dest(config.dist + '/js'));
 });
 
 gulp.task('compass', function() {

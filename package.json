@@ -2,6 +2,10 @@
   "name": "Base-HTML",
   "version": "0.0.2",
   "description": "The standard HTML and CSS template based on HTML5 Boilerplate, Nathan Smith's 960 grid and pieces from Bootstrap 3.",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/WartClaes/Base",
+  },
   "dependencies": {
     "matchdep": "~0.3.0"
   },
