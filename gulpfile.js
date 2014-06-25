@@ -1,15 +1,6 @@
 var gulp = require('gulp'),
-
+    $ = require('gulp-load-plugins')(),
    rimraf = require('rimraf'),
-   jshint = require('gulp-jshint'),
-   uglify = require('gulp-uglify'),
-   compass = require('gulp-compass'),
-   minifycss = require('gulp-minify-css'),
-   imagemin = require('gulp-imagemin'),
-   cache = require('gulp-cache'),
-   plumber = require('gulp-plumber'),
-   notify = require('gulp-notify'),
-
    config = {
        app: './',
        dist: 'build',
@@ -30,25 +21,24 @@ config.styles.apply(config);
 config.images.apply(config);
 
 gulp.task('clean', function(cb) {
-   rimraf(config.dist, cb);
+    rimraf(config.dist, cb);
 });
 
 gulp.task('lint', function() {
-    var dir = config.scripts(),
-        jsFilter = gulpFilter('!/vendor');
+    var dir = config.scripts();
 
     return gulp.src([dir + '/*.js', dir + '/helpers/*.js', dir + '!/vendor/**/*.js'])
-        .pipe(plumber())
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'));
+        .pipe($.plumber())
+        .pipe($.jshint())
+        .pipe($.jshint.reporter('default'));
 });
 
 gulp.task('uglify', function () {
     var dir = config.scripts();
 
     return gulp.src(dir)
-        .pipe(plumber())
-        .pipe(uglify())
+        .pipe($.plumber())
+        .pipe($.uglify())
         .pipe(gulp.dest(config.dist + '/js'));
 });
 
@@ -56,8 +46,8 @@ gulp.task('compass', function() {
     var dir = config.styles();
 
     return gulp.src(dir + '/**/*.scss')
-        .pipe(plumber())
-        .pipe(compass({
+        .pipe($.plumber())
+        .pipe($.compass({
             config_file: './config.rb',
             css: config.app + '/css',
             sass: config.app + '/sass'
@@ -69,14 +59,14 @@ gulp.task('minify-css', function () {
    var dir = config.styles();
 
    return gulp.src(config.app + '/css')
-       .pipe(plumber())
-       .pipe(minifycss())
+       .pipe($.plumber())
+       .pipe($.minifycss())
        .pipe(gulp.dest(config.dist + '/css'));
 });
 
 gulp.task('images', function(){
    return gulp.src(config.app + '/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}')
-       .pipe(cache(imagemin({
+       .pipe($.cache($.imagemin({
            optimizationLevel: 5,
            progressive: true,
            interlaced: true
@@ -92,7 +82,9 @@ gulp.task('images-copy', function(){
 
 gulp.task('minify-end', function(){
     return gulp.src(config.app)
-        .pipe(notify({ message: 'Build task complete' }));
+        .pipe($.notify({
+            message: 'Build task complete'
+        }));
 })
 
 gulp.task('watch', function() {
