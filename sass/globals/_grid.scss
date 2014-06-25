@@ -26,6 +26,8 @@ Grid CSS
         float: left;
         width: cp((($max-width/$columns) * $i) - $gutter);
         padding: $padding;
+        position: relative;
+
         @include border-box();
     }
 }
@@ -46,30 +48,30 @@ Grid CSS
 }
 
 .clear {
-  clear: both;
-  display: block;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
-  height: 0;
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
 }
 
 .grid-container:before,
 .grid-container:after {
-  content: ' ';
-  display: block;
-  overflow: hidden;
-  visibility: hidden;
-  font-size: 0;
-  line-height: 0;
-  width: 0;
-  height: 0;
+    content: ' ';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    font-size: 0;
+    line-height: 0;
+    width: 0;
+    height: 0;
 }
 
 .grid-container:after {
-  clear: both;
+    clear: both;
 }
 
 .grid-container {
-  zoom: 1;
+    zoom: 1;
 }
