@@ -442,6 +442,11 @@ Grid Settings
 */
 /*
 ==========================================================================
+Fonts
+==========================================================================
+*/
+/*
+==========================================================================
 Colors
 ==========================================================================
 */
@@ -460,6 +465,22 @@ Mixins
 Typography
 ==========================================================================
 */
+/* line 7, ../sass/project/_typography.scss */
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+/* line 13, ../sass/project/_typography.scss */
+.small,
+small {
+  font-size: 12.8px;
+}
+
+/* line 17, ../sass/project/_typography.scss */
+li > p {
+  padding-top: 0;
+}
+
 /*
 ==========================================================================
 Project CSS
@@ -468,6 +489,7 @@ Project CSS
 /* line 7, ../sass/project/_page.scss */
 body {
   font-size: 16px;
+  font-family: "Ubuntu Mono";
 }
 
 /*
@@ -480,7 +502,7 @@ Grid CSS
 .grid-container {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1280px;
+  max-width: 960px;
   width: 100%;
 }
 
@@ -488,8 +510,9 @@ Grid CSS
 .grid-container .grid-1 {
   display: inline;
   float: left;
-  width: 6.77083%;
-  padding: 0;
+  width: 8.33333%;
+  padding: 0px;
+  position: relative;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -499,8 +522,9 @@ Grid CSS
 .grid-container .grid-2 {
   display: inline;
   float: left;
-  width: 15.10417%;
-  padding: 0;
+  width: 16.66667%;
+  padding: 0px;
+  position: relative;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -510,8 +534,9 @@ Grid CSS
 .grid-container .grid-3 {
   display: inline;
   float: left;
-  width: 23.4375%;
-  padding: 0;
+  width: 25%;
+  padding: 0px;
+  position: relative;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -521,8 +546,9 @@ Grid CSS
 .grid-container .grid-4 {
   display: inline;
   float: left;
-  width: 31.77083%;
-  padding: 0;
+  width: 33.33333%;
+  padding: 0px;
+  position: relative;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -532,8 +558,9 @@ Grid CSS
 .grid-container .grid-5 {
   display: inline;
   float: left;
-  width: 40.10417%;
-  padding: 0;
+  width: 41.66667%;
+  padding: 0px;
+  position: relative;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -543,8 +570,9 @@ Grid CSS
 .grid-container .grid-6 {
   display: inline;
   float: left;
-  width: 48.4375%;
-  padding: 0;
+  width: 50%;
+  padding: 0px;
+  position: relative;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -554,8 +582,9 @@ Grid CSS
 .grid-container .grid-7 {
   display: inline;
   float: left;
-  width: 56.77083%;
-  padding: 0;
+  width: 58.33333%;
+  padding: 0px;
+  position: relative;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -565,8 +594,9 @@ Grid CSS
 .grid-container .grid-8 {
   display: inline;
   float: left;
-  width: 65.10417%;
-  padding: 0;
+  width: 66.66667%;
+  padding: 0px;
+  position: relative;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -576,8 +606,9 @@ Grid CSS
 .grid-container .grid-9 {
   display: inline;
   float: left;
-  width: 73.4375%;
-  padding: 0;
+  width: 75%;
+  padding: 0px;
+  position: relative;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -587,8 +618,9 @@ Grid CSS
 .grid-container .grid-10 {
   display: inline;
   float: left;
-  width: 81.77083%;
-  padding: 0;
+  width: 83.33333%;
+  padding: 0px;
+  position: relative;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -598,8 +630,9 @@ Grid CSS
 .grid-container .grid-11 {
   display: inline;
   float: left;
-  width: 90.10417%;
-  padding: 0;
+  width: 91.66667%;
+  padding: 0px;
+  position: relative;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -609,96 +642,97 @@ Grid CSS
 .grid-container .grid-12 {
   display: inline;
   float: left;
-  width: 98.4375%;
-  padding: 0;
+  width: 100%;
+  padding: 0px;
+  position: relative;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 34, ../sass/globals/_grid.scss */
+/* line 36, ../sass/globals/_grid.scss */
 .grid-container .push-1 {
-  margin-left: 9.11458%;
+  margin-left: 8.33333%;
   position: relative;
 }
 
-/* line 34, ../sass/globals/_grid.scss */
+/* line 36, ../sass/globals/_grid.scss */
 .grid-container .push-2 {
-  margin-left: 17.44792%;
+  margin-left: 16.66667%;
   position: relative;
 }
 
-/* line 34, ../sass/globals/_grid.scss */
+/* line 36, ../sass/globals/_grid.scss */
 .grid-container .push-3 {
-  margin-left: 25.78125%;
+  margin-left: 25%;
   position: relative;
 }
 
-/* line 34, ../sass/globals/_grid.scss */
+/* line 36, ../sass/globals/_grid.scss */
 .grid-container .push-4 {
-  margin-left: 34.11458%;
+  margin-left: 33.33333%;
   position: relative;
 }
 
-/* line 34, ../sass/globals/_grid.scss */
+/* line 36, ../sass/globals/_grid.scss */
 .grid-container .push-5 {
-  margin-left: 42.44792%;
+  margin-left: 41.66667%;
   position: relative;
 }
 
-/* line 34, ../sass/globals/_grid.scss */
+/* line 36, ../sass/globals/_grid.scss */
 .grid-container .push-6 {
-  margin-left: 50.78125%;
+  margin-left: 50%;
   position: relative;
 }
 
-/* line 34, ../sass/globals/_grid.scss */
+/* line 36, ../sass/globals/_grid.scss */
 .grid-container .push-7 {
-  margin-left: 59.11458%;
+  margin-left: 58.33333%;
   position: relative;
 }
 
-/* line 34, ../sass/globals/_grid.scss */
+/* line 36, ../sass/globals/_grid.scss */
 .grid-container .push-8 {
-  margin-left: 67.44792%;
+  margin-left: 66.66667%;
   position: relative;
 }
 
-/* line 34, ../sass/globals/_grid.scss */
+/* line 36, ../sass/globals/_grid.scss */
 .grid-container .push-9 {
-  margin-left: 75.78125%;
+  margin-left: 75%;
   position: relative;
 }
 
-/* line 34, ../sass/globals/_grid.scss */
+/* line 36, ../sass/globals/_grid.scss */
 .grid-container .push-10 {
-  margin-left: 84.11458%;
+  margin-left: 83.33333%;
   position: relative;
 }
 
-/* line 34, ../sass/globals/_grid.scss */
+/* line 36, ../sass/globals/_grid.scss */
 .grid-container .push-11 {
-  margin-left: 92.44792%;
+  margin-left: 91.66667%;
   position: relative;
 }
 
-/* line 34, ../sass/globals/_grid.scss */
+/* line 36, ../sass/globals/_grid.scss */
 .grid-container .push-12 {
-  margin-left: 100.78125%;
+  margin-left: 100%;
   position: relative;
 }
 
-/* line 40, ../sass/globals/_grid.scss */
+/* line 42, ../sass/globals/_grid.scss */
 .alpha {
   margin-left: 0;
 }
 
-/* line 44, ../sass/globals/_grid.scss */
+/* line 46, ../sass/globals/_grid.scss */
 .omega {
   margin-right: 0;
 }
 
-/* line 48, ../sass/globals/_grid.scss */
+/* line 50, ../sass/globals/_grid.scss */
 .clear {
   clear: both;
   display: block;
@@ -708,7 +742,7 @@ Grid CSS
   height: 0;
 }
 
-/* line 58, ../sass/globals/_grid.scss */
+/* line 60, ../sass/globals/_grid.scss */
 .grid-container:before,
 .grid-container:after {
   content: ' ';
@@ -721,12 +755,12 @@ Grid CSS
   height: 0;
 }
 
-/* line 69, ../sass/globals/_grid.scss */
+/* line 71, ../sass/globals/_grid.scss */
 .grid-container:after {
   clear: both;
 }
 
-/* line 73, ../sass/globals/_grid.scss */
+/* line 75, ../sass/globals/_grid.scss */
 .grid-container {
   zoom: 1;
 }

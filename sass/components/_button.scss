@@ -1,0 +1,45 @@
+/**
+*
+* Button
+*
+**/
+
+.btn {
+    display: inline-block;
+    padding: (($lineHeight / 2) - 1) 32px;
+    margin-bottom: $lineHeight / 2;
+    margin-top: $lineHeight / 2;
+    min-height: $lineHeight;
+
+    text-align: center;
+
+    font-family: $primary-color;
+    font-weight: 600;
+    text-decoration: none;
+
+    outline: 0;
+
+    @include transition(none);
+
+    &:hover {
+        background: #4d4d4d;
+        color: #ffffff;
+        border: 1px solid #4d4d4d;
+        text-decoration: none;
+    }
+}
+
+.btn-primary {
+    @extend .btn;
+    @include style-button($primary-color, #ffffff);
+}
+
+.btn-secondary {
+    @extend .btn;
+    @include style-button(#ffffff, $secondary-color);
+}
+
+.btn-secondary-alt {
+    @extend .btn;
+    @include style-button(#ffffff, $secondary-color, true);
+}
