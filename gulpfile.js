@@ -1,20 +1,20 @@
 var gulp = require('gulp'),
     $ = require('gulp-load-plugins')(),
-   rimraf = require('rimraf'),
-   config = {
-       app: './',
-       dist: 'build',
-       port: 9000,
-       scripts: function () {
-           return this.app + '/js';
-       },
-       styles: function () {
-           return this.app + '/sass';
-       },
-       images: function () {
-           return this.app + '/img';
-       }
-   };
+    rimraf = require('rimraf'),
+    config = {
+        app: './',
+        dist: 'build',
+        port: 9000,
+        scripts: function () {
+            return this.app + '/js';
+        },
+        styles: function () {
+            return this.app + '/sass';
+        },
+        images: function () {
+            return this.app + '/img';
+        }
+    };
 
 config.scripts.apply(config);
 config.styles.apply(config);
@@ -50,22 +50,25 @@ gulp.task('compass', function() {
         .pipe($.compass({
             config_file: './config.rb',
             css: config.app + '/css',
-            sass: config.app + '/sass'
+            sass: config.app + '/sass',
+            style: 'expanded'
         }))
         .pipe(gulp.dest(config.app + '/css'));
 });
 
 gulp.task('minify-css', function () {
-   var dir = config.styles();
+    var dir = config.styles();
 
-   return gulp.src(config.app + '/css')
-       .pipe($.plumber())
-       .pipe($.minifycss())
-       .pipe(gulp.dest(config.dist + '/css'));
+    return gulp.src(config.app + '/css')
+        .pipe($.plumber())
+        .pipe($.minifycss({
+            keepSpecialComments: 0
+        }))
+        .pipe(gulp.dest(config.dist + '/css'));
 });
 
 gulp.task('images', function(){
-   return gulp.src(config.app + '/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}')
+   return gulp.src(config.app + '/img/{,*/}*.{png,jpg,jpeg,gif,svg}')
        .pipe($.cache($.imagemin({
            optimizationLevel: 5,
            progressive: true,
@@ -75,8 +78,8 @@ gulp.task('images', function(){
 });
 
 gulp.task('images-copy', function(){
-   gulp.src(config.app + '/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}')
-   .pipe(gulp.dest(config.dist + '/img'));
+    gulp.src(config.app + '/img/{,*/}*.{png,jpg,jpeg,gif,svg}')
+    .pipe(gulp.dest(config.dist + '/img'));
 });
 
 
@@ -89,22 +92,22 @@ gulp.task('minify-end', function(){
 
 gulp.task('watch', function() {
 
-   // Watch .scss files
-   gulp.watch(config.styles() + '/**/*.scss', ['compass']);
+    // Watch .scss files
+    gulp.watch(config.styles() + '/**/*.scss', ['compass']);
 
-   // Watch .js files
-   gulp.watch(config.scripts() + '/**/*.js', ['lint']);
+    // Watch .js files
+    gulp.watch(config.scripts() + '/**/*.js', ['lint']);
 
-   // Watch image files
-   gulp.watch(config.images() + '/**/*', ['images']);
+    // Watch image files
+    gulp.watch(config.images() + '/**/*', ['images']);
 
 });
 
 // Default
 gulp.task('default', ['compass'], function() {
-   gulp.start('watch');
+    gulp.start('watch');
 });
 
 gulp.task('build', ['clean', 'images'], function(){
-   gulp.start('images-copy', 'minify-css', 'uglify', 'minify-end');
+    gulp.start('images-copy', 'minify-css', 'uglify', 'minify-end');
 });
