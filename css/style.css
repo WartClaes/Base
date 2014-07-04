@@ -3559,6 +3559,69 @@ Grid CSS
   height: 150%;
 }
 
+/* Media Queries */
+/* Big screens */
+@media screen and (min-width: 1200px) {
+  /* line 5, ../sass/project/media/_main.scss */
+  .tablets {
+    display: none !important;
+  }
+}
+/* Normal screens | iPad landscape */
+@media screen and (max-width: 1024px) {
+  /* line 12, ../sass/project/media/_main.scss */
+  .tablets {
+    display: none !important;
+  }
+}
+/* 7" tablets */
+@media screen and (max-width: 600px) {
+  /* line 27, ../sass/project/media/_main.scss */
+  .tablets {
+    display: block !important;
+  }
+
+  /* line 31, ../sass/project/media/_main.scss */
+  .no-tablets {
+    display: none !important;
+  }
+
+  /* line 46, ../sass/project/media/_main.scss */
+  .grid-container .grid-1,
+  .grid-container .grid-2,
+  .grid-container .grid-3,
+  .grid-container .grid-4,
+  .grid-container .grid-5,
+  .grid-container .grid-6,
+  .grid-container .grid-7,
+  .grid-container .grid-8,
+  .grid-container .grid-9,
+  .grid-container .grid-10,
+  .grid-container .grid-11,
+  .grid-container .grid-12 {
+    display: inline;
+    float: left;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+/* iPhone landscape */
+@media screen and (max-width: 480px) {
+  /* line 58, ../sass/project/media/_main.scss */
+  .no-tablets,
+  .no-phones {
+    display: none !important;
+  }
+}
+/* iPhone portrait */
+@media screen and (max-width: 320px) {
+  /* line 66, ../sass/project/media/_main.scss */
+  .no-tablets,
+  .no-phones {
+    display: none !important;
+  }
+}
 @media print {
   /* line 2, ../sass/globals/_print.scss */
   * {
