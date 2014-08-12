@@ -58,11 +58,14 @@ gulp.task('compass', function() {
 
 gulp.task('minify-css', function () {
     var dir = config.styles();
-
-    return gulp.src(config.app + '/css')
+    
+    return gulp.src(dir + '/**/*.scss')
         .pipe($.plumber())
-        .pipe($.minifycss({
-            keepSpecialComments: 0
+        .pipe($.compass({
+            config_file: './config.rb',
+            css: config.app + '/css',
+            sass: config.app + '/sass',
+            style: 'compressed'
         }))
         .pipe(gulp.dest(config.dist + '/css'));
 });
