@@ -40,12 +40,42 @@ Mixins
             box-sizing: border-box;
 }
 
-// Mixin to create buttons
-// ***********************
-@mixin style-button($color, $textColor, $isInverted: false) {
-    background: $color;
-    color: $textColor;
-    border: 1px solid darken($color, 10%);
+// Set opacity
+// http://caniuse.com/#feat=css-opacity
+// ***************************************
+@mixin opacity($arg) {
+    zoom: 1;
+    filter: alpha(opacity = $arg * 100);
+    opacity: $arg;
+}
 
-    @if $isInverted { border-color: transparent;}
+// Create triangle
+// http://caniuse.com/#feat=css3-boxsizing
+// ***************************************
+@mixin triangle($direction, $size, $color) {
+    @if $direction == down {
+
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-bottom: $size solid $color;
+
+    } @else if $direction == down {
+
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-top: $size solid $color;
+
+    } @else if $direction == right {
+
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-left: $size solid $color;
+
+    } @else if $direction == left {
+
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-right:$size solid $color;
+
+    }
 }
