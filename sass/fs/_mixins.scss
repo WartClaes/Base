@@ -50,7 +50,6 @@ Mixins
 }
 
 // Create triangle
-// http://caniuse.com/#feat=css3-boxsizing
 // ***************************************
 @mixin triangle($direction, $size, $color) {
     @if $direction == down {
