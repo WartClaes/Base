@@ -70,7 +70,6 @@ dfn {
   font-style: italic; }
 
 hr {
-  -moz-box-sizing: content-box;
   box-sizing: content-box;
   height: 0; }
 
@@ -195,8 +194,6 @@ input[type="checkbox"], input[type="radio"] {
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
   /* 2 */
   box-sizing: content-box; }
 
@@ -367,16 +364,7 @@ Mixins
 
 .fa-spin {
   -webkit-animation: spin 2s infinite linear;
-  -moz-animation: spin 2s infinite linear;
-  -o-animation: spin 2s infinite linear;
   animation: spin 2s infinite linear; }
-
-@-moz-keyframes spin {
-  0% {
-    -moz-transform: rotate(0deg); }
-
-  100% {
-    -moz-transform: rotate(359deg); } }
 
 @-webkit-keyframes spin {
   0% {
@@ -384,13 +372,6 @@ Mixins
 
   100% {
     -webkit-transform: rotate(359deg); } }
-
-@-o-keyframes spin {
-  0% {
-    -o-transform: rotate(0deg); }
-
-  100% {
-    -o-transform: rotate(359deg); } }
 
 @keyframes spin {
   0% {
@@ -404,41 +385,26 @@ Mixins
 .fa-rotate-90 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
   -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
   transform: rotate(90deg); }
 
 .fa-rotate-180 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
   -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
   transform: rotate(180deg); }
 
 .fa-rotate-270 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
   -webkit-transform: rotate(270deg);
-  -moz-transform: rotate(270deg);
-  -ms-transform: rotate(270deg);
-  -o-transform: rotate(270deg);
   transform: rotate(270deg); }
 
 .fa-flip-horizontal {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
   -webkit-transform: scale(-1, 1);
-  -moz-transform: scale(-1, 1);
-  -ms-transform: scale(-1, 1);
-  -o-transform: scale(-1, 1);
   transform: scale(-1, 1); }
 
 .fa-flip-vertical {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
   -webkit-transform: scale(1, -1);
-  -moz-transform: scale(1, -1);
-  -ms-transform: scale(1, -1);
-  -o-transform: scale(1, -1);
   transform: scale(1, -1); }
 
 .fa-stack {
@@ -1790,7 +1756,9 @@ Project CSS
 */
 body {
   font-size: 16px;
-  font-family: "Arial, Helvetica, sans-serif"; }
+  font-family: "Arial, Helvetica, sans-serif";
+  box-shadow: 1px 1px 1px black;
+  color: whitesmoke; }
 
 /*
 ==========================================================================
@@ -1810,8 +1778,6 @@ Grid CSS
   width: 8.33333%;
   padding: 0px;
   position: relative;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 .grid-container .grid-2 {
@@ -1820,8 +1786,6 @@ Grid CSS
   width: 16.66667%;
   padding: 0px;
   position: relative;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 .grid-container .grid-3 {
@@ -1830,8 +1794,6 @@ Grid CSS
   width: 25%;
   padding: 0px;
   position: relative;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 .grid-container .grid-4 {
@@ -1840,8 +1802,6 @@ Grid CSS
   width: 33.33333%;
   padding: 0px;
   position: relative;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 .grid-container .grid-5 {
@@ -1850,8 +1810,6 @@ Grid CSS
   width: 41.66667%;
   padding: 0px;
   position: relative;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 .grid-container .grid-6 {
@@ -1860,8 +1818,6 @@ Grid CSS
   width: 50%;
   padding: 0px;
   position: relative;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 .grid-container .grid-7 {
@@ -1870,8 +1826,6 @@ Grid CSS
   width: 58.33333%;
   padding: 0px;
   position: relative;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 .grid-container .grid-8 {
@@ -1880,8 +1834,6 @@ Grid CSS
   width: 66.66667%;
   padding: 0px;
   position: relative;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 .grid-container .grid-9 {
@@ -1890,8 +1842,6 @@ Grid CSS
   width: 75%;
   padding: 0px;
   position: relative;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 .grid-container .grid-10 {
@@ -1900,8 +1850,6 @@ Grid CSS
   width: 83.33333%;
   padding: 0px;
   position: relative;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 .grid-container .grid-11 {
@@ -1910,8 +1858,6 @@ Grid CSS
   width: 91.66667%;
   padding: 0px;
   position: relative;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 .grid-container .grid-12 {
@@ -1920,8 +1866,6 @@ Grid CSS
   width: 100%;
   padding: 0px;
   position: relative;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 .grid-container .push-1 {

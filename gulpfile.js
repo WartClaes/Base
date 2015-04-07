@@ -21,6 +21,10 @@ config.scripts.apply(config);
 config.styles.apply(config);
 config.images.apply(config);
 
+function onError(err) {
+    console.log(err);
+}
+
 
 /**
  * Clean dist and temp folder
@@ -91,24 +95,8 @@ gulp.task('images-copy', function(){
 gulp.task('minify-css', function () {
     return gulp.src(config.app + '/css')
         .pipe($.plumber())
-        .pipe($.minifyCSS({
-            keepBreaks:true
-        }))
+        .pipe($.minifyCss())
         .pipe(config.dist + '/css');
-});
-
-
-/**
- * Prefix CSS properties
- */
-gulp.task('prefix', function(){
-    return gulp.src(config.app + '/css')
-        .pipe($.plumber())
-        .pipe($.autoprefixer({
-            browsers: config.browsers,
-            cascade: false
-        }))
-        .pipe(gulp.dest(config.dist));
 });
 
 
@@ -122,6 +110,10 @@ gulp.task('sass', function() {
         .pipe($.plumber())
         .pipe($.sourcemaps.init({debug: true}))
             .pipe($.sass())
+            .pipe($.autoprefixer({
+                browsers: config.browsers,
+                cascade: false
+            }))
         .pipe($.sourcemaps.write('../.maps'))
         .pipe(gulp.dest(config.app + '/css'));
 });
@@ -165,6 +157,7 @@ gulp.task('default', ['sass'], function() {
     gulp.start('watch');
 });
 
-gulp.task('build', ['clean', 'images', 'prefix'], function(){
+//TODO: 'minify-css'
+gulp.task('build', ['images', 'sass'], function(){
     gulp.start('images-copy', 'end');
 });
