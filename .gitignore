@@ -1,4 +1,6 @@
 .sass-cache/
+.idea/
+.maps/
 node_modules/
 
 # don't commit the distribution version. It will cause mistakes

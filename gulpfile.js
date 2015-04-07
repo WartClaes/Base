@@ -5,13 +5,14 @@ var gulp = require('gulp'),
         app: './',
         dist: 'build',
         port: 9000,
-        scripts: function () {
+        browsers: ['last 2 versions'],
+        scripts: function(){
             return this.app + '/js';
         },
-        styles: function () {
+        styles: function(){
             return this.app + '/sass';
         },
-        images: function () {
+        images: function(){
             return this.app + '/img';
         }
     };
@@ -20,10 +21,37 @@ config.scripts.apply(config);
 config.styles.apply(config);
 config.images.apply(config);
 
+
+/**
+ * Clean dist and temp folder
+ */
 gulp.task('clean', function(cb) {
-    rimraf(config.dist, cb);
+    rimraf.sync(config.dist, cb);
 });
 
+
+/**
+ * Remove node_modules folder
+ */
+gulp.task('destruct', function(cb) {
+    rimraf.sync('node_modules', cb);
+});
+
+
+/**
+ * Notify on build end
+ */
+gulp.task('end', function(){
+    return gulp.src(config.app)
+        .pipe($.notify({
+            message: 'Build task complete'
+        }));
+});
+
+
+/**
+ * Hint projects javascript files
+ */
 gulp.task('lint', function() {
     var dir = config.scripts();
 
@@ -33,6 +61,75 @@ gulp.task('lint', function() {
         .pipe($.jshint.reporter('default'));
 });
 
+
+/**
+ * Minify images
+ */
+gulp.task('images', function(){
+    return gulp.src(config.app + '/img/{,*/}*.{png,jpg,jpeg,gif,svg}')
+        .pipe($.cache($.imagemin({
+            optimizationLevel: 5,
+            progressive: true,
+            interlaced: true
+        })))
+        .pipe(gulp.dest(config.app + '/img'));
+});
+
+
+/**
+ * Copy images into distribution folder
+ */
+gulp.task('images-copy', function(){
+    gulp.src(config.app + '/img/{,*/}*.{png,jpg,jpeg,gif,svg}')
+        .pipe(gulp.dest(config.dist + '/img'));
+});
+
+
+/**
+ * Minify CSS files
+ */
+gulp.task('minify-css', function () {
+    return gulp.src(config.app + '/css')
+        .pipe($.plumber())
+        .pipe($.minifyCSS({
+            keepBreaks:true
+        }))
+        .pipe(config.dist + '/css');
+});
+
+
+/**
+ * Prefix CSS properties
+ */
+gulp.task('prefix', function(){
+    return gulp.src(config.app + '/css')
+        .pipe($.plumber())
+        .pipe($.autoprefixer({
+            browsers: config.browsers,
+            cascade: false
+        }))
+        .pipe(gulp.dest(config.dist));
+});
+
+
+/**
+ * Sass task
+ */
+gulp.task('sass', function() {
+    var dir = config.styles();
+
+    return gulp.src(dir + '/**/*.scss')
+        .pipe($.plumber())
+        .pipe($.sourcemaps.init({debug: true}))
+            .pipe($.sass())
+        .pipe($.sourcemaps.write('../.maps'))
+        .pipe(gulp.dest(config.app + '/css'));
+});
+
+
+/**
+ * Minify javascript files
+ */
 gulp.task('uglify', function () {
     var dir = config.scripts();
 
@@ -42,61 +139,14 @@ gulp.task('uglify', function () {
         .pipe(gulp.dest(config.dist + '/js'));
 });
 
-gulp.task('compass', function() {
-    var dir = config.styles();
 
-    return gulp.src(dir + '/**/*.scss')
-        .pipe($.plumber())
-        .pipe($.compass({
-            config_file: './config.rb',
-            css: config.app + '/css',
-            sass: config.app + '/sass',
-            style: 'expanded'
-        }))
-        .pipe(gulp.dest(config.app + '/css'));
-});
-
-gulp.task('minify-css', function () {
-    var dir = config.styles();
-    
-    return gulp.src(dir + '/**/*.scss')
-        .pipe($.plumber())
-        .pipe($.compass({
-            config_file: './config.rb',
-            css: config.app + '/css',
-            sass: config.app + '/sass',
-            style: 'compressed'
-        }))
-        .pipe(gulp.dest(config.dist + '/css'));
-});
-
-gulp.task('images', function(){
-   return gulp.src(config.app + '/img/{,*/}*.{png,jpg,jpeg,gif,svg}')
-       .pipe($.cache($.imagemin({
-           optimizationLevel: 5,
-           progressive: true,
-           interlaced: true
-       })))
-       .pipe(gulp.dest(config.app + '/img'));
-});
-
-gulp.task('images-copy', function(){
-    gulp.src(config.app + '/img/{,*/}*.{png,jpg,jpeg,gif,svg}')
-    .pipe(gulp.dest(config.dist + '/img'));
-});
-
-
-gulp.task('minify-end', function(){
-    return gulp.src(config.app)
-        .pipe($.notify({
-            message: 'Build task complete'
-        }));
-})
-
+/**
+ * Set watch tasks
+ */
 gulp.task('watch', function() {
 
     // Watch .scss files
-    gulp.watch(config.styles() + '/**/*.scss', ['compass']);
+    gulp.watch(config.styles() + '/**/*.scss', ['sass']);
 
     // Watch .js files
     gulp.watch(config.scripts() + '/**/*.js', ['lint']);
@@ -106,11 +156,15 @@ gulp.task('watch', function() {
 
 });
 
+
+/**
+ * Set combined tasks
+ */
 // Default
-gulp.task('default', ['compass'], function() {
+gulp.task('default', ['sass'], function() {
     gulp.start('watch');
 });
 
-gulp.task('build', ['clean', 'images'], function(){
-    gulp.start('images-copy', 'minify-css', 'uglify', 'minify-end');
+gulp.task('build', ['clean', 'images', 'prefix'], function(){
+    gulp.start('images-copy', 'end');
 });
