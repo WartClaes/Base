@@ -1,12 +1,6 @@
-/*
-==========================================================================
-Project CSS
-==========================================================================
-*/
+// Project CSS
 
 body {
-	font-size: $fontSize;
-    font-family: $baseFont;
-    box-shadow: 1px 1px 1px black;
-    color: whitesmoke;
+    font-family: $base-font;
+    font-size: $font-size;
 }

@@ -17,9 +17,8 @@ audio,
 canvas,
 video {
     display: inline-block;
-    *display: inline;
-    *zoom: 1;
 }
+
 audio:not([controls]) {
     display: none;
     height: 0;
@@ -30,9 +29,7 @@ audio:not([controls]) {
 }
 
 html {
-    font-size: 100%; /* 1 */
-    -ms-text-size-adjust: 100%; /* 2 */
-    -webkit-text-size-adjust: 100%; /* 2 */
+    font-size: 100%;
 }
 
 html,
@@ -58,12 +55,12 @@ a:hover {
 
 h1 {
     font-size: 2em;
-    margin: 0.67em 0;
+    margin: .67em 0;
 }
 
 h2 {
     font-size: 1.5em;
-    margin: 0.83em 0;
+    margin: .83em 0;
 }
 
 h3 {
@@ -77,12 +74,12 @@ h4 {
 }
 
 h5 {
-    font-size: 0.83em;
+    font-size: .83em;
     margin: 1.67em 0;
 }
 
 h6 {
-    font-size: 0.67em;
+    font-size: .67em;
     margin: 2.33em 0;
 }
 
@@ -104,14 +101,13 @@ dfn {
 }
 
 hr {
-    -moz-box-sizing: content-box;
     box-sizing: content-box;
     height: 0;
 }
 
 mark {
-    background: #ff0;
-    color: #000;
+    background: #FFFF00;
+    color: #000000;
 }
 
 p,
@@ -124,12 +120,10 @@ kbd,
 pre,
 samp {
     font-family: monospace, serif;
-    _font-family: 'courier new', monospace;
     font-size: 1em;
 }
 
 pre {
-    white-space: pre;
     white-space: pre-wrap;
     word-wrap: break-word;
 }
@@ -141,7 +135,6 @@ q {
 q:before,
 q:after {
     content: '';
-    content: none;
 }
 
 
@@ -158,11 +151,11 @@ sup {
 }
 
 sup {
-    top: -0.5em;
+    top: -.5em;
 }
 
 sub {
-    bottom: -0.25em;
+    bottom: -.25em;
 }
 
 dl,
@@ -189,8 +182,8 @@ nav ol {
 }
 
 img {
-    border: 0; /* 1 */
-    -ms-interpolation-mode: bicubic; /* 2 */
+    border: 0;
+    -ms-interpolation-mode: bicubic;
 }
 
 svg:not(:root) {
@@ -206,26 +199,24 @@ form {
 }
 
 fieldset {
-    border: 1px solid #c0c0c0;
+    border: 1px solid #C0C0C0;
     margin: 0 2px;
-    padding: 0.35em 0.625em 0.75em;
+    padding: .35em .625em .75em;
 }
 
 legend {
-    border: 0; /* 1 */
+    border: 0;
     padding: 0;
-    white-space: normal; /* 2 */
-    *margin-left: -7px; /* 3 */
+    white-space: normal;
 }
 
 button,
 input,
 select,
 textarea {
-    font-size: 100%; /* 1 */
-    margin: 0; /* 2 */
-    vertical-align: baseline; /* 3 */
-    *vertical-align: middle; /* 3 */
+    font-size: 100%;
+    margin: 0;
+    vertical-align: baseline;
 }
 
 button,
@@ -239,12 +230,11 @@ select {
 }
 
 button,
-html input[type="button"], /* 1 */
+html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-    -webkit-appearance: button; /* 2 */
-    cursor: pointer; /* 3 */
-    *overflow: visible;  /* 4 */
+    -webkit-appearance: button;
+    cursor: pointer;
 }
 
 button[disabled],
@@ -254,16 +244,11 @@ html input[disabled] {
 
 input[type="checkbox"],
 input[type="radio"] {
-    box-sizing: border-box; /* 1 */
-    padding: 0; /* 2 */
-    *height: 13px; /* 3 */
-    *width: 13px; /* 3 */
+    box-sizing: border-box;
+    padding: 0;
 }
 
 input[type="search"] {
-    -webkit-appearance: textfield; /* 1 */
-    -moz-box-sizing: content-box;
-    -webkit-box-sizing: content-box; /* 2 */
     box-sizing: content-box;
 }
 
@@ -279,8 +264,8 @@ input::-moz-focus-inner {
 }
 
 textarea {
-    overflow: auto; /* 1 */
-    vertical-align: top; /* 2 */
+    overflow: auto;
+    vertical-align: top;
 }
 
 table {

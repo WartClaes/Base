@@ -1,9 +1,5 @@
-/*
-==========================================================================
-Grid CSS
-- 12 column Grid system [target / context = result]
-==========================================================================
-*/
+// Grid CSS
+// - 12 column Grid system [target / context = result]
 
 @function calc-percent($target) {
     @return ($target / $max-width) * 100%;
@@ -18,17 +14,18 @@ Grid CSS
     margin-right: auto;
     max-width: $max-width;
     width: 100%;
+    zoom: 1;
 }
 
 @for $i from 1 through $columns {
     .grid-container .grid-#{$i} {
+        @include border-box();
+
         display: inline;
         float: left;
-        width: cp((($max-width/$columns) * $i) - $gutter);
         padding: $padding;
         position: relative;
-
-        @include border-box();
+        width: cp((($max-width/$columns) * $i) - $gutter);
     }
 }
 
@@ -50,28 +47,24 @@ Grid CSS
 .clear {
     clear: both;
     display: block;
+    height: 0;
     overflow: hidden;
     visibility: hidden;
     width: 0;
-    height: 0;
 }
 
 .grid-container:before,
 .grid-container:after {
     content: ' ';
     display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
     overflow: hidden;
     visibility: hidden;
-    font-size: 0;
-    line-height: 0;
     width: 0;
-    height: 0;
 }
 
 .grid-container:after {
     clear: both;
-}
-
-.grid-container {
-    zoom: 1;
 }

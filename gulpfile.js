@@ -1,30 +1,28 @@
 var gulp = require('gulp'),
     $ = require('gulp-load-plugins')(),
     rimraf = require('rimraf'),
+    app = './',
     config = {
         app: './',
         dist: 'build',
         port: 9000,
         browsers: ['last 2 versions'],
-        scripts: function(){
-            return this.app + '/js';
-        },
-        styles: function(){
-            return this.app + '/sass';
-        },
-        images: function(){
-            return this.app + '/img';
-        }
+        scripts: app + '/js/*.js',
+        styles: app + '/sass/**/*.scss',
+        images: app + '/img/{,*/}*.{png,jpg,jpeg,gif,svg}'
     };
 
-config.scripts.apply(config);
-config.styles.apply(config);
-config.images.apply(config);
-
-function onError(err) {
-    console.log(err);
-}
-
+/**
+ * Autoprefixer
+ */
+gulp.task('autoprefixer', function(){
+    return gulp.src('dist/css/*.css')
+        .pipe($.autoprefixer({
+            browsers: config.browsers,
+            cascade: false
+        }))
+        .pipe(gulp.dest('dist/css'));
+})
 
 /**
  * Clean dist and temp folder
@@ -37,7 +35,7 @@ gulp.task('clean', function(cb) {
 /**
  * Remove node_modules folder
  */
-gulp.task('destruct', function(cb) {
+gulp.task('destruct', ['clean'], function(cb) {
     rimraf.sync('node_modules', cb);
 });
 
@@ -54,23 +52,10 @@ gulp.task('end', function(){
 
 
 /**
- * Hint projects javascript files
- */
-gulp.task('lint', function() {
-    var dir = config.scripts();
-
-    return gulp.src([dir + '/*.js', dir + '/helpers/*.js', dir + '!/vendor/**/*.js'])
-        .pipe($.plumber())
-        .pipe($.jshint())
-        .pipe($.jshint.reporter('default'));
-});
-
-
-/**
  * Minify images
  */
 gulp.task('images', function(){
-    return gulp.src(config.app + '/img/{,*/}*.{png,jpg,jpeg,gif,svg}')
+    return gulp.src(config.images)
         .pipe($.cache($.imagemin({
             optimizationLevel: 5,
             progressive: true,
@@ -84,8 +69,19 @@ gulp.task('images', function(){
  * Copy images into distribution folder
  */
 gulp.task('images-copy', function(){
-    gulp.src(config.app + '/img/{,*/}*.{png,jpg,jpeg,gif,svg}')
+    gulp.src(config.images)
         .pipe(gulp.dest(config.dist + '/img'));
+});
+
+
+/**
+ * Hint projects javascript files
+ */
+gulp.task('jslint', function() {
+    return gulp.src(config.scripts)
+        .pipe($.plumber())
+        .pipe($.jshint())
+        .pipe($.jshint.reporter('default'));
 });
 
 
@@ -104,11 +100,11 @@ gulp.task('minify-css', function () {
  * Sass task
  */
 gulp.task('sass', function() {
-    var dir = config.styles();
-
-    return gulp.src(dir + '/**/*.scss')
+    return gulp.src(config.styles)
         .pipe($.plumber())
-        .pipe($.sourcemaps.init({debug: true}))
+        .pipe($.sourcemaps.init({
+                debug: true
+            }))
             .pipe($.sass())
             .pipe($.autoprefixer({
                 browsers: config.browsers,
@@ -118,14 +114,22 @@ gulp.task('sass', function() {
         .pipe(gulp.dest(config.app + '/css'));
 });
 
+/**
+ * SCSS lint task
+ */
+gulp.task('scsslint', function(){
+    gulp.src(config.styles)
+        .pipe($.scssLint({
+            'config': 'scsslint.yml',
+        }));
+});
+
 
 /**
  * Minify javascript files
  */
 gulp.task('uglify', function () {
-    var dir = config.scripts();
-
-    return gulp.src(dir)
+    return gulp.src(config.scripts)
         .pipe($.plumber())
         .pipe($.uglify())
         .pipe(gulp.dest(config.dist + '/js'));
@@ -138,13 +142,13 @@ gulp.task('uglify', function () {
 gulp.task('watch', function() {
 
     // Watch .scss files
-    gulp.watch(config.styles() + '/**/*.scss', ['sass']);
+    gulp.watch(config.styles, ['scsslint', 'sass']);
 
     // Watch .js files
-    gulp.watch(config.scripts() + '/**/*.js', ['lint']);
+    gulp.watch(config.scripts, ['jslint']);
 
     // Watch image files
-    gulp.watch(config.images() + '/**/*', ['images']);
+    gulp.watch(config.images, ['images']);
 
 });
 
@@ -153,11 +157,11 @@ gulp.task('watch', function() {
  * Set combined tasks
  */
 // Default
-gulp.task('default', ['sass'], function() {
+gulp.task('default', ['jslint', 'scsslint', 'sass'], function() {
     gulp.start('watch');
 });
 
 //TODO: 'minify-css'
 gulp.task('build', ['images', 'sass'], function(){
-    gulp.start('images-copy', 'end');
+    gulp.start('autoprefixer', 'images-copy', 'end');
 });

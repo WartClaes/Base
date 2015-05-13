@@ -1,20 +1,16 @@
-//@import "compass/reset"; // total reset
-@import "globals/normalize";
-@import "globals/overrides";
+//@import 'compass/reset'; // total reset
+@import 'globals/normalize';
+@import 'globals/overrides';
 
-@import "settings";
+@import 'settings';
 
-@import "fs/animations";
-@import "fs/mixins";
+@import 'fs/animations';
+@import 'fs/mixins';
 
-@import "components/fontawesome/font-awesome";
+@import 'project/page';
 
-@import "project/page";
+@import 'globals/grid';
+@import 'globals/forms';
+@import 'globals/helpers';
 
-@import "globals/grid";
-@import "globals/forms";
-@import "globals/helpers";
-
-@import "project/media/main";
-
-@import "globals/print";
+@import 'project/media/main';

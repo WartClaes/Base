@@ -5,10 +5,11 @@
  *
  * !!IMPORTANT: Some variables are needed so they are declared in settings.yml and created in base.html.twig
  **/
- 
+
 (function ($) {
     $.fn.track = function(options) {
-    	var settings = $.extend({
+    	var _gaq,
+            settings = $.extend({
     			id: null,
     			name: null,
                 language: null,
@@ -20,27 +21,26 @@
         	}, options);
 
     	$('*[' + settings.value + '][' + settings.action + ']').bind('click', function(){
-            var go = true,
-                error = null;
+            var error = null;
 
-    		settings.gaValue = $(this).attr(settings.value),
+    		settings.gaValue = $(this).attr(settings.value);
     		settings.gaAction = $(this).attr(settings.action);
 
             for (var setting in settings) {
-                if(settings[setting] == null) {
+                if(settings[setting] === null) {
                     error = 'no ' + setting + ' set';
                 }
             }
 
-            if(error == null) {
+            if(error === null) {
                 if(settings.debug && console){
                     console.log(settings);
                 }
-                    
+
                 _gaq.push([
-                    '_trackEvent', 
-                    settings.name, 
-                    settings.gaAction, 
+                    '_trackEvent',
+                    settings.name,
+                    settings.gaAction,
                     settings.id + '_' + settings.language + '_' + settings.gaValue
                 ]);
             } else {
@@ -55,10 +55,12 @@
 }(jQuery));
 
 $(function(){
+    var _gaDebug, _gaProjectIid, _gaProjectName, _gaLanguage;
+
     $('body').track({
-        debug : _ga_debug,
-        id : _ga_project_id,
-        name : _ga_project_name,
-        language : _ga_language
+        debug : _gaDebug,
+        id : _gaProjectIid,
+        name : _gaProjectName,
+        language : _gaLanguage
     });
 });
