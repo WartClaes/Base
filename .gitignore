@@ -1,5 +1,9 @@
+.idea/
+.maps/
 .sass-cache/
+.tmp/
 node_modules/
+bower_components/
 
 # don't commit the distribution version. It will cause mistakes
-build/
+dist/
