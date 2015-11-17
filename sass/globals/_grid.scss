@@ -23,6 +23,7 @@
 
         display: inline;
         float: left;
+        margin: $gutter/2;
         padding: $padding;
         position: relative;
         width: cp((($max-width/$columns) * $i) - $gutter);
